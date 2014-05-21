@@ -10,3 +10,6 @@
 [submodule "bundle/nave"]
 	path = bundle/nave
 	url = git@github.com:isaacs/nave.git
+[submodule "bundle/zsh/zsh-syntax-highlighting"]
+	path = bundle/zsh/zsh-syntax-highlighting
+	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
