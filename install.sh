@@ -12,7 +12,7 @@ cd $ROOT
 
 ln -sf `pwd`/configs/* $HOME/
 
-ln -s `pwd`/ssh/config $HOME/.ssh/
+ln -sf `pwd`/ssh/config $HOME/.ssh/config
 
 ln -sf `pwd`/bundle/tmux/.tmux.conf $HOME/.tmux.conf
 
