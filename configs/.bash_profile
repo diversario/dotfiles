@@ -1,0 +1,1 @@
+/Users/diversario/.bash_profile
