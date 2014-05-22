@@ -14,9 +14,12 @@ function slackbot_says(){
 
 alias slackbot=slackbot_says
 
-PATH=$PATH:$HOME/bin
+PATH=$PATH:$HOME/bin:$HOME/.rvm/bin
 
-setopt interactivecomments
+if [[ `echo $0` =~ 'zsh' ]]; then
+  setopt interactivecomments
+  setopt NO_NOMATCH
+fi
 
 # If not running interactively, do not do anything
 #[[ $- != *i* ]] && return
@@ -25,7 +28,3 @@ setopt interactivecomments
 # Setting for the new UTF-8 terminal support in Lion
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-setopt NO_NOMATCH

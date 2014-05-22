@@ -49,7 +49,6 @@ ZSH_THEME="robbyrussell"
 plugins=(git git-extras brew colored-man colorize github gitfast screen node npm history-substring-search z)
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 

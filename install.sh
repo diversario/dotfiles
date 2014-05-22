@@ -17,7 +17,10 @@ done
 ln -sf `pwd`/ssh/config $HOME/.ssh/config
 
 ln -sf `pwd`/bundle/tmux/.tmux.conf $HOME/.tmux.conf
+
+ln -sf `pwd`/bundle/vim $HOME/.vim
 ln -sf `pwd`/bundle/vim/vimrc $HOME/.vimrc
-ln -sf `pwd`/bundle/oh-my-zsh $HOME/.oh-my-zsh
+
+ln -sf `pwd`/bundle/zsh/oh-my-zsh $HOME/.oh-my-zsh
 
 ln -sf `pwd`/bundle/zsh/zsh-syntax-highlighting $HOME/.oh-my-zsh/custom/plugins/

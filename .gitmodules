@@ -4,12 +4,12 @@
 [submodule "bundle/vim"]
 	path = bundle/vim
 	url = https://github.com/diversario/vim-config.git
-[submodule "bundle/oh-my-zsh"]
-	path = bundle/oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "bundle/nave"]
 	path = bundle/nave
 	url = git@github.com:isaacs/nave.git
 [submodule "bundle/zsh/zsh-syntax-highlighting"]
 	path = bundle/zsh/zsh-syntax-highlighting
 	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "bundle/zsh/oh-my-zsh"]
+	path = bundle/zsh/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
