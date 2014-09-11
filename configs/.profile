@@ -28,3 +28,18 @@ fi
 # Setting for the new UTF-8 terminal support in Lion
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
+
+# from https://github.com/brianphillips/dotfiles/blob/master/environment.sh
+export EDITOR='vim'
+export PATH="$HOME/bin:$HOME/opt/bin:/opt/git/bin:$PATH"
+export LANG=en_US.UTF-8
+export TERM=xterm-256color
+
+# Predictable SSH authentication socket location.
+SOCK="$HOME/.ssh/ssh-auth-sock"
+if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
+then
+    rm -f $SOCK
+    ln -sf $SSH_AUTH_SOCK $SOCK
+    export SSH_AUTH_SOCK=$SOCK
+fi
