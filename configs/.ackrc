@@ -1,3 +1,4 @@
 --ignore-dir=node_modules
 --ignore-dir=.idea
 --ignore-dir=coverage
+--flush

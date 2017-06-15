@@ -1,13 +1,7 @@
-Host *.shuttercorp.net *.shuttercloud.net *.bigstockcorp.net *.offsetcorp.net
-  User ishaisultanov
-  ForwardAgent yes
+Host *
+  UseKeychain yes
 
-Host devcode dev-code01.nj01.shuttercloud.net
-  User ishaisultanov
+Host gitlab.com
+  User diversario
   ForwardAgent yes
-  Hostname dev-code01.nj01.shuttercloud.net
-
-Host prodlogs
-  User ishaisultanov
-  ForwardAgent yes
-  Hostname logs.shuttercorp.net
+  IdentityFile ~/.ssh/id_rsa

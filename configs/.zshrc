@@ -1,4 +1,5 @@
-LANG=en_US.utf8
+LANG=en_US.UTF-8
+LC_ALL=en_US.UTF-8
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -7,6 +8,8 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+#source /usr/local/share/antigen/antigen.zsh
+#antigen bundle lukechilds/zsh-nvm
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -46,13 +49,16 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras brew colored-man colorize github gitfast screen node npm history-substring-search z zsh-syntax-highlighting)
+plugins=(git git-extras brew colored-man colorize github gitfast node npm history-substring-search z zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin/:Users/diversario/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin:/bin:/Users/diversario/bin:$PATH"
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -74,3 +80,10 @@ bindkey '^[[1;9D' backward-word
 source ~/.profile
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# added by travis gem
+[ -f /Users/diversario/.travis/travis.sh ] && source /Users/diversario/.travis/travis.sh
+
+source ~/.zshrc.local
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
