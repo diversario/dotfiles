@@ -4,9 +4,13 @@ git submodule update --init
 
 cd $ROOT/bundle/vim
 git submodule update --init
+git checkout master
+git pull
 
 cd $ROOT/bundle/tmux
 git submodule update --init
+git checkout master
+git pull
 
 cd $ROOT
 
