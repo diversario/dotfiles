@@ -87,3 +87,12 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 source ~/.zshrc.local
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+
+setopt HIST_FIND_NO_DUPS
+
+setopt inc_append_history
+setopt share_history
+alias tmux='tmux -u'

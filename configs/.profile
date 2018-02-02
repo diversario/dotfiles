@@ -37,8 +37,9 @@ LC_ALL=en_US.UTF-8
 
 setopt NO_NOMATCH
 
-export GOPATH=$HOME/Projects/Shutterstock/go
-export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+export GOPATH=$HOME/Projects/go
+export GOBIN=$HOME/bin
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export LESS=' -R '
 export EDITOR='vim'
 
