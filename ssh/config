@@ -1,7 +1,20 @@
 Host *
   UseKeychain yes
 
+Host ishaisultanov-mbp
+  User ishaisultanov
+  ForwardAgent yes
+  IdentityFile ~/.ssh/id_rsa
+
 Host gitlab.com
   User diversario
   ForwardAgent yes
   IdentityFile ~/.ssh/id_rsa
+
+Host dev-01
+  # Bluefyre-processor + Bluefyre-proxy
+  Hostname 13.82.182.18
+  User ilya.shaisultanov
+  IdentityFile ~/.ssh/bluefyre/dev.01-rsa
+  ServerAliveInterval 30
+  ServerAliveCountMax 4
