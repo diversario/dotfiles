@@ -46,3 +46,5 @@
 	user = diversario
 [ghi]
 	token = !security find-internet-password -a diversario -s github.com -l 'ghi token' -w
+[oh-my-zsh]
+	hide-dirty = 1

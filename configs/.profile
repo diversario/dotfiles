@@ -38,7 +38,6 @@ LC_ALL=en_US.UTF-8
 setopt NO_NOMATCH
 
 export GOPATH=$HOME/Projects/go
-export GOBIN=$HOME/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export LESS=' -R '
 export EDITOR='vim'
@@ -97,3 +96,5 @@ function unminikubify() {
   unset DOCKER_CERT_PATH
   unset DOCKER_API_VERSION
 }
+
+export PATH="$HOME/.cargo/bin:$PATH"
