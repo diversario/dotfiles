@@ -1,5 +1,6 @@
-LANG=en_US.UTF-8
-LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -81,18 +82,14 @@ source ~/.profile
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-# added by travis gem
-[ -f /Users/diversario/.travis/travis.sh ] && source /Users/diversario/.travis/travis.sh
-
 source ~/.zshrc.local
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
-export HISTSIZE=100000
-export HISTFILESIZE=100000
 
-setopt HIST_FIND_NO_DUPS
-
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
 setopt inc_append_history
 setopt share_history
+setopt HIST_FIND_NO_DUPS
+
 alias tmux='tmux -u'
