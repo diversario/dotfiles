@@ -8,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="../../dotfiles/zsh-themes/robbyrussell-better"
 #source /usr/local/share/antigen/antigen.zsh
 #antigen bundle lukechilds/zsh-nvm
 
@@ -80,11 +80,13 @@ bindkey '^[[1;9C' forward-word
 bindkey '^[[1;9D' backward-word
 source ~/.profile
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 source ~/.zshrc.local
 
 export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+
+if [[ ! -z "$GOPATH" ]]; then
+  PATH=$PATH:$GOPATH/bin
+fi
 
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
