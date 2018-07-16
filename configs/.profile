@@ -98,3 +98,25 @@ function unminikubify() {
 }
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+function envvars() {
+  local selector=$1; shift
+  local files=($@)
+
+  if [[ -z $files ]]; then
+    files="${selector}"
+    selector=".envVars"
+  fi
+
+  local merge_string='.[0]'
+
+  local num_elements=$((${#files[@]}-1))
+
+  if [[ $num_elements -gt 0 ]]; then
+	  for i in $(seq $num_elements); do
+	  	merge_string="$merge_string * .[$i]"
+	  done
+  fi
+
+  yq -s "$merge_string" $files | yq -Mrj $selector' as $e | $e | keys | .[] | "-e \(.)=\($e[.]) "'
+}
