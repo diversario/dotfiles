@@ -1,0 +1,45 @@
+kubectl config get-contexts -o name |
+while read ctx; do
+  cluster=$(echo $ctx | awk -F'.' '{ print $3 }')
+
+  if [[ $ctx =~ ^apps ]]; then
+    name=$(echo $ctx | awk -F'.' '{ print $1 }' | awk -F'-' '{ print $2 substr($3,0,1) }')
+  elif [[ $ctx =~ ^ops ]]; then
+    name=$(echo $ctx | awk -F'.' '{ print $1 }' | awk -F'-' '{ print $1 substr($2,0,1) }')
+  fi
+
+  kubectlbin=''
+  helmbin=''
+
+  KUBECTL153='kubectl153'
+  KUBECTL184='kubectl184'
+  KUBECTL192='kubectl192'
+  HELM223='helm223'
+  HELM272='helm272'
+  HELM291='helm291'
+
+  if [[ $ctx =~ green ]]; then
+    if [[ $ctx =~ ops ]]; then
+      kubectlbin=$KUBECTL184
+      helmbin=$HELM291
+    else
+      kubectlbin=$KUBECTL153
+      helmbin=$HELM223
+    fi
+  elif [[ $ctx =~ blue ]]; then
+    if [[ $ctx =~ ops ]]; then
+      kubectlbin=$KUBECTL153
+      helmbin=$HELM223
+    else
+      kubectlbin=$KUBECTL184
+      helmbin=$HELM291
+    fi
+  fi
+
+  eval "alias k$cluster$name='$kubectlbin --context $ctx'"
+  eval "alias h$cluster$name='$helmbin --kube-context $ctx'"
+done
+
+for bin in $KUBECTL153 $KUBECTL184; do
+  source <(~/bin/$bin completion zsh | sed -e "s/kubectl/$bin/g")
+done
