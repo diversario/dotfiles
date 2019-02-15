@@ -18,3 +18,8 @@ Host dev-01
   IdentityFile ~/.ssh/bluefyre/dev.01-rsa
   ServerAliveInterval 30
   ServerAliveCountMax 4
+
+Host picard-02
+  Hostname 35.231.129.227
+  User ilya.shaisultanov
+  IdentityFile ~/.ssh/bluefyre-picard-02_rsa
