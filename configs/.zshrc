@@ -8,7 +8,11 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="../../dotfiles/zsh-themes/robbyrussell-better"
+if [[ -f ../../.dotfiles/zsh-themes/robbyrussell-better ]]; then
+  ZSH_THEME="../../.dotfiles/zsh-themes/robbyrussell-better"
+else
+  ZSH_THEME="robbyrussell"
+fi
 #source /usr/local/share/antigen/antigen.zsh
 #antigen bundle lukechilds/zsh-nvm
 
@@ -42,7 +46,7 @@ ZSH_THEME="../../dotfiles/zsh-themes/robbyrussell-better"
 # much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to  shown in the command execution time stamp 
+# Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
@@ -80,7 +84,9 @@ bindkey '^[[1;9C' forward-word
 bindkey '^[[1;9D' backward-word
 source ~/.profile
 
-source ~/.zshrc.local
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
 
 export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 
