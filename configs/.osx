@@ -29,11 +29,14 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+defaults write com.apple.AppleMultitouchTrackpad HIDScrollZoomModifierMask -int 262144
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad HIDScrollZoomModifierMask -int 262144
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
-defaults write NSGlobalDomain AppleLanguages -array "en-US" "ru-US" "zh-Hant-US"
+# doesn't work
+# defaults write NSGlobalDomain AppleLanguages -array "en-US" "ru-US" "zh-Hant-US"
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
@@ -74,10 +77,6 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 # Four-letter codes for the other view modes: `icnv`, `Nlsv`, `clmv`, `Flwv`
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
-# Set the icon size of Dock items
-defaults write com.apple.dock tilesize -int 77
-defaults write com.apple.dock autohide -bool true
-
 # Hot corners
 # Possible values:
 #  0: no-op
@@ -102,6 +101,16 @@ defaults write com.apple.dock mru-spaces -bool false
 
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
+
+# Set the icon size of Dock items
+defaults write com.apple.dock tilesize -int 77
+defaults write com.apple.dock autohide -bool true
+
+# nuke all apps from the dock, only on the first run
+if ! defaults read com.diversario.settings dockAppsCleared; then
+  defaults write com.apple.dock persistent-apps -array
+  defaults write com.diversario.settings dockAppsCleared -bool true
+fi
 
 defaults write com.apple.spotlight orderedItems -array \
 	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
@@ -150,7 +159,14 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
 # Turn on app auto-update
+defaults write com.apple.commerce AutoUpdate -bool true
 
+defaults write com.apple.universalaccessAuthWarning "/Applications/Steam.app" -bool true
+defaults write com.apple.universalaccessAuthWarning "/Applications/Steam.app/Contents/MacOS/steam_osx" -bool true
+defaults write com.apple.universalaccessAuthWarning "1::/Applications" -bool true
+defaults write com.apple.universalaccessAuthWarning "1::/Applications/Alacritty.app" -bool true
+defaults write com.apple.universalaccessAuthWarning "1::/Applications/VirtualBox.app" -bool true
+defaults write com.apple.universalaccessAuthWarning "com.valvesoftware.steam" -bool true
 
 # Restart affected applications if `--no-restart` flag is not present.
 if [[ ! ($* == *--no-restart*) ]]; then
