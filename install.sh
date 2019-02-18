@@ -22,6 +22,9 @@ for f in `ls -a configs | grep -E '\.\w+'`; do
   ln -sf `pwd`/configs/$f $HOME/$f;
 done
 
+mkdir -p ~/.config
+ln -sf `pwd`/configs/alacritty $HOME/.config/
+
 ln -sf `pwd`/ssh/config $HOME/.ssh/config
 
 ln -sf `pwd`/bundle/tmux/.tmux.conf $HOME/.tmux.conf
