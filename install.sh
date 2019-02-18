@@ -18,7 +18,7 @@ if [[ ! -f ~/.oh-my-zsh ]]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-for f in `ls -a configs | grep -E '\.\w+'`; do
+for f in `ls -a configs | grep -E '^\.\w+'`; do
   ln -sf `pwd`/configs/$f $HOME/$f;
 done
 
@@ -34,4 +34,5 @@ ln -sf `pwd`/bundle/vim/vimrc $HOME/.vimrc
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-ln -sf `pwd`/bundle/zsh/zsh-syntax-highlighting $HOME/.oh-my-zsh/custom/plugins/
+# so z plugin doesn't print an error
+if [[ ! -f $HOME/.z ]]; then touch $HOME/.z; fi

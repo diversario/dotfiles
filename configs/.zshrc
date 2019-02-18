@@ -64,6 +64,8 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin:/bin:$HOME/
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 bindkey -e
 bindkey '^[[1;9C' forward-word
 bindkey '^[[1;9D' backward-word
@@ -84,5 +86,7 @@ export HISTFILESIZE=1000000
 setopt inc_append_history
 setopt share_history
 setopt HIST_FIND_NO_DUPS
+setopt interactivecomments
+setopt NO_NOMATCH
 
 alias tmux='tmux -u'
