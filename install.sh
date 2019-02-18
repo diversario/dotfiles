@@ -32,6 +32,6 @@ ln -sf `pwd`/bundle/tmux/.tmux.conf $HOME/.tmux.conf
 ln -sf `pwd`/bundle/vim $HOME/.vim
 ln -sf `pwd`/bundle/vim/vimrc $HOME/.vimrc
 
-#ln -sf `pwd`/bundle/zsh/oh-my-zsh $HOME/.oh-my-zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 ln -sf `pwd`/bundle/zsh/zsh-syntax-highlighting $HOME/.oh-my-zsh/custom/plugins/
