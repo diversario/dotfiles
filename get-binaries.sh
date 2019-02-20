@@ -9,7 +9,7 @@ KUBECTL_URL="https://storage.googleapis.com/kubernetes-release/release/vVERSION/
 
 mkdir -p ~/bin
 
-for v in '2.2.3' '2.7.2' '2.9.1'; do
+for v in '2.12.3'; do
   tar_filename=/tmp/helmv$v.tar.gz
   filter=$OS-amd64/helm
   bin_name=~/bin/helm$(echo $v | sed -e 's/\.//g')
@@ -24,7 +24,7 @@ for v in '2.2.3' '2.7.2' '2.9.1'; do
 done
 
 
-for v in '1.5.3' '1.8.4' '1.9.2'; do
+for v in '1.11.7'; do
   filename=~/bin/kubectl$(echo $v | sed -e 's/\.//g')
   url=$(echo $KUBECTL_URL | sed -e "s/VERSION/$v/")
   echo "Downloading kubectl v$v from $url to $filename"

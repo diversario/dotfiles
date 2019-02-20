@@ -83,6 +83,7 @@ fi
 
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
+export ZSH_HIGHLIGHT_MAXLENGTH=60
 setopt inc_append_history
 setopt share_history
 setopt HIST_FIND_NO_DUPS
@@ -90,3 +91,7 @@ setopt interactivecomments
 setopt NO_NOMATCH
 
 alias tmux='tmux -u'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/ishaisultanov/.sdkman"
+[[ -s "/Users/ishaisultanov/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ishaisultanov/.sdkman/bin/sdkman-init.sh"

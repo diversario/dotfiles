@@ -44,3 +44,7 @@ function envvars() {
 
   yq -s "$merge_string" $files | yq -Mrj $selector' as $e | $e | keys | .[] | "-e \(.)=\($e[.]) "'
 }
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/ishaisultanov/.sdkman"
+[[ -s "/Users/ishaisultanov/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ishaisultanov/.sdkman/bin/sdkman-init.sh"
