@@ -32,6 +32,8 @@ ln -sf `pwd`/bundle/tmux/.tmux.conf $HOME/.tmux.conf
 ln -sf `pwd`/bundle/vim $HOME/.vim
 ln -sf `pwd`/bundle/vim/vimrc $HOME/.vimrc
 
+ln -sf $HOME/.dotfiles/bundle/oh-my-zsh/themes/robbyrussell-better.zsh-theme $HOME/.oh-my-zsh/custom/themes/
+
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # so z plugin doesn't print an error
