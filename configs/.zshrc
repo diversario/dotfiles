@@ -8,11 +8,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-if [[ -f ../../.dotfiles/zsh-themes/robbyrussell-better ]]; then
-  ZSH_THEME="../../.dotfiles/zsh-themes/robbyrussell-better"
-else
-  ZSH_THEME="robbyrussell"
-fi
+ZSH_THEME="../bundle/oh-my-zsh/themes/robbyrussell-better"
+
 #source /usr/local/share/antigen/antigen.zsh
 #antigen bundle lukechilds/zsh-nvm
 
@@ -61,21 +58,30 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin:/bin:$HOME/bin:$PATH"
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+if which nodenv &>/dev/null; then
+  export PATH="$HOME/.nodenv/bin:$PATH"
+  eval "$(nodenv init -)"
+fi
 
+if which rvm &>/dev/null; then
+  PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+fi
+
+# opt/ctrl + arrow key navigation
 bindkey -e
 bindkey '^[[1;9C' forward-word
 bindkey '^[[1;9D' backward-word
+
 source ~/.profile
 
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
 
-export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+if [[ -f /usr/local/bin/lesspipe.sh ]]; then
+  export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
+fi
 
 if [[ ! -z "$GOPATH" ]]; then
   PATH=$PATH:$GOPATH/bin
@@ -84,14 +90,14 @@ fi
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
 export ZSH_HIGHLIGHT_MAXLENGTH=60
-setopt inc_append_history
-setopt share_history
+
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FCNTL_LOCK
+setopt SHARE_HISTORY
 setopt HIST_FIND_NO_DUPS
-setopt interactivecomments
+setopt INTERACTIVE_COMMENTS
 setopt NO_NOMATCH
 
-alias tmux='tmux -u'
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/ishaisultanov/.sdkman"
-[[ -s "/Users/ishaisultanov/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/ishaisultanov/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

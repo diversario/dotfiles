@@ -11,14 +11,6 @@ Host gitlab.com
   ForwardAgent yes
   IdentityFile ~/.ssh/id_rsa
 
-Host dev-01
-  # Bluefyre-processor + Bluefyre-proxy
-  Hostname 13.82.182.18
-  User ilya.shaisultanov
-  IdentityFile ~/.ssh/bluefyre/dev.01-rsa
-  ServerAliveInterval 30
-  ServerAliveCountMax 4
-
 Host picard-02
   Hostname 35.231.129.227
   User ilya.shaisultanov
