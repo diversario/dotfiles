@@ -73,6 +73,10 @@ bindkey -e
 bindkey '^[[1;9C' forward-word
 bindkey '^[[1;9D' backward-word
 
+if [[ -z $JAVA_HOME && -f /usr/libexec/java_home ]]; then
+  export JAVA_HOME=$(/usr/libexec/java_home)
+fi
+
 source ~/.profile
 
 if [[ -f ~/.zshrc.local ]]; then
