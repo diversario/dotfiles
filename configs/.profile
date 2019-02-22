@@ -45,4 +45,3 @@ function envvars() {
   yq -s "$merge_string" $files | yq -Mrj $selector' as $e | $e | keys | .[] | "-e \(.)=\($e[.]) "'
 }
 
-alias tmux='tmux -u'
