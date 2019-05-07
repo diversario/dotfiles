@@ -1,5 +1,6 @@
 alias WW='cd ~/Documents/Projects/'
 alias fuckit='git clean -d -x -f; git reset --hard'
+alias tf=terraform
 
 function psaxgrepstuff(){
   ps ax | grep -v grep | grep $1
@@ -37,9 +38,9 @@ function envvars() {
   local num_elements=$((${#files[@]}-1))
 
   if [[ $num_elements -gt 0 ]]; then
-	  for i in $(seq $num_elements); do
-	  	merge_string="$merge_string * .[$i]"
-	  done
+    for i in $(seq $num_elements); do
+      merge_string="$merge_string * .[$i]"
+    done
   fi
 
   yq -s "$merge_string" $files | yq -Mrj $selector' as $e | $e | keys | .[] | "-e \(.)=\($e[.]) "'

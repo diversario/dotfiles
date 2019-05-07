@@ -51,7 +51,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git colored-man gitfast history-substring-search z zsh-syntax-highlighting)
+plugins=(git colored-man-pages gitfast history-substring-search z zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,17 +91,25 @@ if [[ ! -z "$GOPATH" ]]; then
   PATH=$PATH:$GOPATH/bin
 fi
 
+if [[ -f /usr/local/share/zsh/site-functions/aws_zsh_completer.sh ]]; then
+  source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
+fi
+
 export HISTSIZE=1000000
+export SAVEHIST=$((HISTSIZE+1000))
 export HISTFILESIZE=1000000
 export ZSH_HIGHLIGHT_MAXLENGTH=60
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FCNTL_LOCK
-setopt SHARE_HISTORY
 setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt SHARE_HISTORY
 setopt INTERACTIVE_COMMENTS
 setopt NO_NOMATCH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

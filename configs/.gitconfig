@@ -8,6 +8,7 @@
   extendedRegexp = true
 [core]
   excludesfile = ~/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
@@ -48,3 +49,5 @@
 	token = !security find-internet-password -a diversario -s github.com -l 'ghi token' -w
 [oh-my-zsh]
 	hide-dirty = 1
+[diff "sopsdiffer"]
+	textconv = sops -d

@@ -1,5 +1,6 @@
 Host *
   UseKeychain yes
+  ForwardAgent yes
 
 Host ishaisultanov-mbp
   User ishaisultanov
@@ -8,7 +9,6 @@ Host ishaisultanov-mbp
 
 Host gitlab.com
   User diversario
-  ForwardAgent yes
   IdentityFile ~/.ssh/id_rsa
 
 Host picard-02
