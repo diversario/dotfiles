@@ -2,7 +2,7 @@ Host *
   UseKeychain yes
   ForwardAgent yes
 
-Host ishaisultanov-mbp
+Host bastion-production.plaid.com
   User ishaisultanov
   ForwardAgent yes
   IdentityFile ~/.ssh/id_rsa

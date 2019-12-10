@@ -46,4 +46,3 @@ wider_completion_menu = False
 # \d - Database name
 # \n - Newline
 prompt = '\t \u@\h:\d> '
-

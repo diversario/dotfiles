@@ -1,6 +1,6 @@
 [user]
-  name = Ilya Shaisultanov
-  email = ilya.shaisultanov@gmail.com
+	name = Ilya Shaisultanov
+	email = ishaisultanov@plaid.com
 [color]
   ui = true
 [grep]
@@ -51,3 +51,5 @@
 	hide-dirty = 1
 [diff "sopsdiffer"]
 	textconv = sops -d
+[url "git@github.plaid.com:"]
+  insteadOf = https://github.plaid.com/

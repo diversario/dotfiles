@@ -1,4 +1,3 @@
-alias WW='cd ~/Documents/Projects/'
 alias fuckit='git clean -d -x -f; git reset --hard'
 alias tf=terraform
 
@@ -15,7 +14,7 @@ LC_CTYPE=en_US.UTF-8
 LANG=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-export GOPATH=$HOME/Projects/go
+#export GOPATH=$HOME/Projects/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export LESS=' -R '
 export EDITOR='vim'
