@@ -113,3 +113,5 @@ setopt NO_NOMATCH
 #[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export PROMPT='${ret_status} $(date "+%b %d %H:%M:%S") %m %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'

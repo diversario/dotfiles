@@ -1,17 +1,9 @@
 Host *
   UseKeychain yes
   ForwardAgent yes
+  StrictHostKeyChecking accept-new
 
 Host bastion-production.plaid.com
   User ishaisultanov
   ForwardAgent yes
   IdentityFile ~/.ssh/id_rsa
-
-Host gitlab.com
-  User diversario
-  IdentityFile ~/.ssh/id_rsa
-
-Host picard-02
-  Hostname 35.231.129.227
-  User ilya.shaisultanov
-  IdentityFile ~/.ssh/bluefyre-picard-02_rsa

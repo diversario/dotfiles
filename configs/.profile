@@ -19,10 +19,6 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export LESS=' -R '
 export EDITOR='vim'
 
-function prodlogs {
-  ssh prodlogs tail -qF /var/log/flume/shutterstock-accounts__w*.w*.std*.log/current
-}
-
 function envvars() {
   local selector=$1; shift
   local files=($@)
@@ -45,3 +41,26 @@ function envvars() {
   yq -s "$merge_string" $files | yq -Mrj $selector' as $e | $e | keys | .[] | "-e \(.)=\($e[.]) "'
 }
 
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+function curltime() {
+curl -w @- -o /dev/null -s "$@" <<'EOF'
+    time_namelookup:  %{time_namelookup}\n
+       time_connect:  %{time_connect}\n
+    time_appconnect:  %{time_appconnect}\n
+   time_pretransfer:  %{time_pretransfer}\n
+      time_redirect:  %{time_redirect}\n
+ time_starttransfer:  %{time_starttransfer}\n
+                    ----------\n
+         time_total:  %{time_total}\n
+EOF
+}
+
+function iIp() {
+  local instanceId=i-$(echo $1 | sed 's/i-//')
+
+  aws ec2 describe-instances --instance-ids $instanceId --query 'Reservations[0].Instances[0].NetworkInterfaces[0].PrivateIpAddress' | tr -d '"'
+}
+
+export PATH="$HOME/.asdf/installs/poetry/1.0.0/bin:$PATH"
