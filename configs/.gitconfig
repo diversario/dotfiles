@@ -1,6 +1,7 @@
 [user]
 	name = Ilya Shaisultanov
 	email = ishaisultanov@plaid.com
+	signingkey = 9A2C227C673E5559
 [color]
   ui = true
 [grep]
@@ -38,9 +39,10 @@
   untracked = cyan
 
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [alias]
 	dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
 [github]
@@ -53,3 +55,9 @@
 	textconv = sops -d
 [url "git@github.plaid.com:"]
   insteadOf = https://github.plaid.com/
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false
